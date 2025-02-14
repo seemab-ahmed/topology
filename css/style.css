@@ -1,0 +1,1165 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Fira+Code:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+* { 
+  margin: 0; 
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Lato", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  color: #333;
+  background: #fff;
+}  
+/* container */
+.container {
+  max-width: 1280px;
+  width: 90%;
+  margin: 0 auto; 
+}
+/******************************* Dropdown Styles start*/
+.dropdown {
+  margin-top: 24px;
+}
+.dropdown strong{
+  font-size: 20px;
+}
+select {
+  font-size: 17px;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 250px;
+  margin-left: 6px;
+}
+
+select:focus {
+  outline: none;
+  border-color: #b00013;
+}
+.topology-row {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: column-reverse;
+  position: relative;
+  gap: 20px;
+  padding: 0 0 40px;
+}
+.popup-btn {
+  position: absolute;
+  width: 50px;
+  height:55px;
+  /* background: #000; */
+  display: block;
+  cursor: pointer;
+  font-size: 10px;
+  font-family: "Lato", serif;
+  color: #b00013;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.text-blue {
+  color: #3f71a6;
+}
+.popup-btn.btn-1 {
+  top: 26.5%;
+  right: 37.7%;
+}
+.popup-btn.btn-2 {
+  top: 45.5%;
+  right: 37.7%;
+}
+.popup-btn.btn-3 {
+  top: 64%;
+  right: 37.7%;
+}
+.popup-btn.btn-4 {
+  top: 27%;
+  right: 28.7%;
+}
+.popup-btn.btn-5 {
+  top: 60%;
+  right: 28.7%;
+}
+#simple-topo-2 .popup-btn.btn-1 {
+  top: 13%;
+  right: 48%;
+}
+#simple-topo-2 .popup-btn.btn-2 {
+  top: 23%;
+  right: 48%;
+}
+#simple-topo-2 .popup-btn.btn-3 {
+  top: 46%;
+  right: 48%;
+}
+#simple-topo-2 .popup-btn.btn-4 {
+  top: 70%;
+  right: 48%;
+}
+#simple-topo-2 .popup-btn.btn-5 {
+  top: 13%;
+  right: 41%;
+}
+#simple-topo-2 .popup-btn.btn-6 {
+  top: 30%;
+  right: 41%;
+}
+#simple-topo-2 .popup-btn.btn-7 {
+  top: 53%;
+  right: 41%;
+}
+#simple-topo-2 .popup-btn.btn-8 {
+  top: 77%;
+  right: 41%;
+}
+/* flow labels */
+.flow-label {
+  position: absolute;
+  background: #a2d8ff;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #333;
+  color: #333;
+  font-size: 14px;
+  font-weight: bold;
+}
+.flow-label.label-1 {
+  top: 33%;
+  left: 34%;
+}
+.flow-label.label-2 {
+  top: 50%;
+  left: 34%;
+}
+.flow-label.label-3 {
+  top: 67%;
+  left: 34%;
+}
+.flow-label.label-4 {
+  top: 19%;
+  right: 4.5%;
+}
+.flow-label.label-5 {
+  top: 76%;
+  right: 4.5%;
+}
+.network-label-grp {
+  color: #b00013;
+  font-family: "Lato", serif;
+  position: absolute;
+  z-index: 5;
+  line-height: 1;
+  font-size: 14px;
+}
+.network-label-name {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 5px;
+  display: block;
+}
+.network-label-domain {
+  font-weight: 600;
+  color: #555;
+  display: block;
+}
+.diagram-topology .vcn-name-label{
+  top: 20%;
+  left: 150px;
+}
+#simple-topo-2 .diagram-topology .vcn-name-label{
+  top: 18%;
+  left: 17%;
+}
+/* 2 */
+.diagram-topology .public-name-label{
+  top: 32%;
+  left: 215px;
+}
+.diagram-topology .private-name-label {
+  top: 49%;
+  left: 258px;
+}
+.diagram-topology .rt-name-label {
+  top: 67%;
+  left: 258px;
+}
+/*************************** Form Styling */
+form {
+  max-width: 100%;
+  width: 100%;
+  border: 1px solid rgb(0, 0, 0);
+  padding: 20px;
+  border-radius: 10px;
+  /* margin-top: -65px; */
+  margin-top: 15px;
+}
+form h3 {
+  margin-bottom: 20px;
+}
+.form-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 15px;
+}
+.input-grp {
+  position: relative;
+}
+.input-grp label {
+  /* display: block; */
+  /* margin-bottom: 10px; */
+  color: #555;
+  font-size: 14px;
+  font-weight: bold;
+  position: absolute;
+  background: #fff;
+  top: 10px;
+  padding: 2px 4px;
+  left: 10px;
+  /* transform: translateY(-50%); */
+  transition: 0.3s all ease-in-out;
+  /* pointer-events: none; */
+  cursor: text;
+  z-index: 2;
+}
+input {
+  width: 100%;
+  padding: 12px;
+  max-width: 100%;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+input:focus {
+  border: 1px solid #b00013;
+  outline: none;
+}
+.input-grp:focus-within label,
+.input-grp input:has(:placeholder-shown) label {
+  top: -8px;
+  left: 8px;
+  font-size: 12px;
+  color: #b00013;
+}
+.input-grp:has(input:focus),
+.input-grp:has(input:not(:placeholder-shown)) {
+  label {
+    top: -8px;
+    left: 10px;
+    font-size: 12px;
+    color: #b00013;
+  }
+}
+.form-col {
+  display: flex;
+  /* align-items: center; */
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px #00000050;
+}
+.grp-label {
+  font-size: 16px;
+}
+.form-btn-grp {
+  display: flex;
+  gap: 20px;
+  margin-left: auto;
+  justify-content: end;
+  max-width: max-content;
+}
+.form-btm {
+  display: flex;
+  align-items: start;
+  margin: 20px 0 0;
+}
+.form-checkouts {
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  align-items: center;
+  max-width: 60%;
+}
+.form-checkouts label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  font-size: 14px;
+}
+.form-checkouts input[type=checkbox] {
+  width: 14px;
+  height: 14px;
+}
+.network-btn {
+  width: max-content;
+  padding: 14px;
+  display: block;
+  font-size: 15px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #b00013;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #9f0111;
+}
+.output {
+  margin-top: 20px;
+  background: #e9ecef;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+/* Diagram Topology one Section Styles */
+.diagram-topology {
+  margin-top: 10px;
+  position: relative;
+  max-width:100%;
+  width: 100%;
+}
+
+/* style for update value in diagram */
+/* 1 */
+.diagram-topology p{
+  padding: 0px;
+  margin: 0px;
+  font-size: 14px;
+  color: #ed760d;
+}
+.diagram-topology .vcn-name-label{
+  top: 20%;
+  left: 215px;
+}
+#simple-topo-2 .diagram-topology .vcn-hub-label{
+  top: 12%;
+  left: 14%;
+}
+#simple-topo-2 .diagram-topology .spoke-vcn-a-label{
+  top: 42.5%;
+  left: 14%;
+}
+#simple-topo-2 .diagram-topology .spoke-vcn-b-label{
+  top: 67.5%;
+  left: 14%;
+}
+#simple-topo-2 .diagram-topology .vcn-name-label{
+  top: 18%;
+  left: 17%;
+}
+/* 2 */
+.diagram-topology .public-name-label{
+  position: absolute;
+  top: 32%;
+  left: 258px;
+  z-index: 5;
+}
+#simple-topo-2 .diagram-topology .public-name-label{
+  top: 27%;
+  left: 17%;
+}
+/* 3 */
+
+#simple-topo-2 .diagram-topology .private-name-label{
+  top: 50%;
+  left: 17%;
+}
+/* 4 */
+
+#simple-topo-2 .diagram-topology .rt-name-label{
+  top: 74%;
+  left: 17%;
+}
+.diagram-topology img{
+  width: 100%;
+}
+.diagram-topology h3{
+  color: #3f3f3f;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+
+/* *************************** Diagram End */
+/* *************************** button design */
+.generate-btn {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+  justify-content: center;
+}
+.generate-btn button {
+  padding: 8px 18px;
+  background-color: #b00013;
+  border: 1px solid #b00013;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #FFF;
+  font-weight: bold;
+  height: 40px;
+}
+.generate-btn button:hover {
+  padding: 8px 18px;
+  background-color: #9f0111;
+}
+
+/* ******************** ALL popUp code*************** */
+/* genrate TF popup */
+.generateTFPopup {
+  display: none;
+  border: 1px solid rgb(212, 210, 210);
+  border-radius: 10px;
+  padding: 20px 20px;
+  position: absolute;
+  background-color: white;
+  z-index: 7000;
+  top: 25%;
+  max-width: 350px;
+  width: 100%;
+}
+.code-block span{
+  color: #e67e22;
+}
+.code-block{
+  padding-bottom: 14px;
+  font-family: "Fira Code", serif;
+  margin: 20px 0;
+  overflow-x: auto;
+}
+.generateTFPopup h3 {
+  margin: 0;
+  padding: 0;
+}
+.generateCloseBtn {
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  right: 10px;
+  color: red;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 4px;
+}
+.generateTFPopup a {
+  text-decoration: none; 
+  text-align: center;
+  background-color: #702323;
+  color: #fff;
+  padding: 10px 16px;
+  margin: 10px  0px 20px 0px;
+  border-radius: 6px;
+}
+
+/* ******** right top popup */
+/* Popup Style */
+.popup {
+  display: none; 
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 10;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  padding: 10px 20px 20px;
+  font-size: 12px;
+}
+
+.popup-content {
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.popup-heading {
+  display: flex;
+  text-align: center;
+}
+
+.popup table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.popup table th, .popup table td {
+  border: 1px solid #ddd;
+  padding: 4px;
+  font-size: 12px;
+}
+
+.popup table th {
+  background-color: #f4f4f4;
+  text-align: left;
+  font-size: 12px;
+  
+}
+
+/*right-bottom Popup Style */
+.rightBottompopup {
+  display: none; 
+  position: absolute;
+  top: 32%;
+  right: 0%;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 10;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  padding: 10px 20px 20px;
+}
+#top2-popup-6 {
+  top: 25%;
+}
+.rightBottompopup-content {
+  position: relative;
+}
+
+.rightBottomclose-btn {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.rightBottompopup-heading {
+  display: flex;
+  text-align: center;
+}
+
+.rightBottompopup table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.rightBottompopup table th, .rightBottompopup table td {
+  border: 1px solid #ddd;
+  padding: 4px;
+  font-size: 12px;
+}
+
+.rightBottompopup table th {
+  background-color: #f4f4f4;
+  text-align: left;
+  font-size: 12px;
+}
+/* right three popup topology 2 */
+.rightThreepopup {
+  display: none; 
+  position: absolute;
+  top: 63%;
+  right: 0%;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 10;
+  width: 100%;
+  max-width: 350px;
+  height: 174px;
+  padding: 6px 20px;
+}
+#top2-popup-7 {
+  top: 50%;
+}
+.rightThreepopup-content {
+  position: relative;
+}
+
+.rightThreeclose-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.rightThreepopup-heading {
+  display: flex;
+  text-align: center;
+}
+
+.rightThreepopup table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.rightThreepopup table th, .rightThreepopup table td {
+  border: 1px solid #ddd;
+  padding: 4px;
+  font-size: 18px;
+}
+
+.rightThreepopup table th {
+  background-color: #f4f4f4;
+  text-align: left;
+  font-size: 12px;
+}
+/* right three popup topology 2 */
+.rightFourpopup {
+  display: none; 
+  position: absolute;
+  top: 75%;
+  right: 0%;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 10;
+  width: 100%;
+  max-width: 350px;
+  height: 174px;
+  padding: 6px 20px;
+}
+.rightFourpopup-content {
+  position: relative;
+}
+
+.rightFourclose-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.rightFourpopup-heading {
+  display: flex;
+  text-align: center;
+}
+
+.rightFourpopup table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.rightFourpopup table th, .rightFourpopup table td {
+  border: 1px solid #ddd;
+  padding: 4px;
+  font-size: 18px;
+}
+
+.rightFourpopup table th {
+  background-color: #f4f4f4;
+  text-align: left;
+  font-size: 12px;
+}
+
+/* left Popup Style */
+.leftpopup {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 10;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  padding: 10px 20px 20px;
+}
+/* left center popup */
+.leftTopPopup{
+  top: 0%;
+  left: 0%;
+}
+.leftCenterpopup {
+  top: 32%;
+  left: 0%;
+}
+#top2-popup-2 {
+  top: 24%;
+}
+.leftBottompopup {
+  top: 64%;
+  left: 0%;
+}
+#top2-popup-3 {
+  top: 48%;
+}
+.leftpopup-content {
+  position: relative;
+}
+
+.leftClose-btn {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.leftpopup tr th{
+  font-size: 9px;
+}
+.leftpopup {
+  font-size: 12px;
+}
+/* body {
+  overflow: hidden; Optional: Disable scrolling when popup is open 
+  }   */
+  
+  .leftpopup table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .leftpopup table th, .leftpopup table td {
+    border: 1px solid #ddd;
+  padding: 6px;
+}
+
+.leftpopup table th {
+  background-color: #f4f4f4;
+  text-align: left;
+}
+
+/**************** left Popup Style **********************/
+.leftButtompopup {
+  display: none;
+  position: absolute;
+  top: 70%;
+  left: 0%;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 10;
+  width: 100%;
+  max-width: 350px;
+  height: 300px;
+  padding: 10px 20px;
+}
+
+.leftButtompopup-content {
+  position: relative;
+}
+
+.leftButtomClose-btn {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.leftButtompopup tr th{
+  font-size: 9px;
+}
+.leftButtompopup {
+  font-size: 12px;
+}
+/* body {
+  overflow: hidden; Optional: Disable scrolling when popup is open 
+  }   */
+  
+  .leftButtompopup table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .leftButtompopup table th, .leftButtompopup table td {
+    border: 1px solid #ddd;
+    padding: 6px;
+  }
+  
+  .leftButtompopup table th {
+    background-color: #f4f4f4;
+    text-align: left;
+  }
+  /**************** left Finnal last Popup Style **********************/
+  .leftFinnalpopup {
+    display: none;
+    position: absolute;
+    top: 72%;
+    left: 0%;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 10;
+    width: 100%;
+    max-width: 350px;
+    height: 200px;
+    padding: 10px 20px;
+  }
+  
+  .leftFinnalpopup-content {
+    position: relative;
+  }
+  
+  .leftFinnalClose-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .leftFinnalpopup tr th{
+    font-size: 9px;
+  }
+  .leftFinnalpopup {
+    font-size: 12px;
+  }
+  /* body {
+    overflow: hidden; Optional: Disable scrolling when popup is open 
+    }   */
+    
+    .leftFinnalpopup table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .leftFinnalpopup table th, .leftFinnalpopup table td {
+      border: 1px solid #ddd;
+      padding: 6px;
+    }
+    
+    .leftFinnalpopup table th {
+      background-color: #f4f4f4;
+      text-align: left;
+    }
+@media screen and (max-width:1320px) {
+  .network-label-name {
+    font-size: 16px;
+  }
+  .network-label-domain {
+    font-size: 14px;
+  }
+  /* .popup-btn.btn-1 {
+    top: 25%;
+    right: 37%;
+  }
+  .popup-btn.btn-2 {
+    top:42%;
+    right: 37%;
+  }
+  .popup-btn.btn-3 {
+    top: 59%;
+    right: 37%;
+  }
+  .popup-btn.btn-4 {
+    top: 25%;
+    right: 28%;
+  }
+  .popup-btn.btn-5 {
+    top: 56%;
+    right: 28%;
+  } */
+  .diagram-topology .vcn-name-label {
+    top: 21%;
+    left: 18%;
+  }
+  .diagram-topology .public-name-label {
+    top: 32%;
+    left: 21%;
+  }
+  .diagram-topology .private-name-label {
+    /* top: 48%; */
+    left: 21%;
+  }
+  .diagram-topology .rt-name-label {
+    top: 66%;
+    left: 21%;
+  }
+}
+@media screen and (max-width:1180px) {
+  .network-label-name {
+    font-size: 14px;
+  }
+  .network-label-domain {
+    font-size: 12px;
+  }
+  .topology-row {
+    flex-direction: column-reverse;
+  }
+  
+  form {
+    max-width: 100%;
+    width: 100%;
+    margin-top: 14px;
+  }
+  .form-inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .diagram-topology {
+    margin-top: 10px;
+    position: relative;
+    max-width: 100%;
+  }
+  .popup-btn.btn-1 {
+    top: 26%;
+    right: 36.5%;
+  }
+  .popup-btn.btn-2 {
+    top: 42%;
+    right: 36.5%;
+  }
+  .popup-btn.btn-3 {
+    top: 60%;
+    right: 37%;
+  }
+  .popup-btn.btn-4 {
+    top: 25.5%;
+    right: 28%;
+  }
+  .popup-btn.btn-5 {
+    top: 57%;
+    right: 28%;
+  }
+  .diagram-topology .vcn-name-label {
+    top: 20%;
+    left: 17%;
+  }
+  .diagram-topology .public-name-label {
+    top: 32%;
+    left: 21%;
+  }
+  .diagram-topology .private-name-label {
+    top: 48%;
+    left: 21%;
+  }
+  .diagram-topology .rt-name-label {
+    top: 65%;
+    left: 21%;
+  }
+  #simple-topo-2 .popup-btn.btn-8 {
+    top: 78%;
+    right: 41%;
+}
+  .flow-label {
+    padding: 2px 4px;
+    font-size: 12px;
+  }
+  .flow-label.label-5 {
+    top: 72%;
+  }
+}
+
+@media screen and (max-width:992px) {
+  .popup-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 10px;
+  }
+  .form-btm {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  .form-checkouts {
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: 100%;
+  }
+  .flow-label.label-3 {
+    top: 64%;
+  }
+  .flow-label.label-2 {
+    top: 48%;
+  }
+  .flow-label.label-4 {
+    top: 17%;
+    right: 3.5%;
+  }
+  .flow-label.label-5 {
+    top: 68%;
+    right: 3.5%;
+  }
+
+}
+@media screen and (max-width:768px) {
+  .form-inner {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+  }
+  
+  /* button {
+    margin-top: 20px;
+  } */
+  .network-label-name {
+    font-size: 12px;
+  }
+  .network-label-domain {
+    font-size: 10px;
+  }
+  .popup-btn.btn-2 {
+    top: 42%;
+  }
+  .popup-btn.btn-5 {
+    top: 54%;
+  }
+  .popup-btn.btn-3 {
+    top: 57%;
+    right: 36.5%;
+  }
+  .popup-btn.btn-4 {
+    top: 26.5%;
+    right: 27.5%;
+  }
+  
+  .diagram-topology .private-name-label {
+    top: 44%;
+  }
+  .diagram-topology .rt-name-label {
+    top: 57%;
+  }
+  .popup-btn {
+    width: 40px;
+    height: 30px;
+    font-size: 8px;
+
+  }
+  .diagram-topology .public-name-label {
+    top: 30%;
+  }
+  #simple-topo-2 .popup-btn.btn-5 {
+    top: 16%;
+  }
+  #simple-topo-2 .popup-btn.btn-1 {
+    top: 15%;
+  }
+  #simple-topo-2 .popup-btn.btn-2 {
+    top: 24%;
+  }
+  #simple-topo-2 .popup-btn.btn-4 {
+    top: 68%;
+  }
+  #simple-topo-2 .popup-btn.btn-3 {
+    top: 46%;
+  }
+  #simple-topo-2 .popup-btn.btn-7 {
+    top: 53%;
+  }
+  #simple-topo-2 .popup-btn.btn-8 {
+    top: 75%;
+  }
+  .flow-label {
+    padding: 1px 3px;
+    font-size: 9px;
+  }
+  .flow-label.label-2 {
+    top: 53%;
+  }
+  .flow-label.label-3 {
+    top: 74%;
+  }
+  .flow-label.label-4 {
+    right: 3%;
+  }
+  .flow-label.label-5 {
+    top: 83%;
+    right: 3%;
+  }
+  .leftpopup, .popup, .rightBottompopup {
+    position: static;
+    margin-bottom: 10px;
+  }
+
+}
+@media screen and (max-width:520px) {
+  .topo-img-wrapper {
+    position: relative;
+    width: 480px;
+  }
+  .diagram-topology{
+    overflow: auto;
+  }
+  .diagram-topology .vcn-name-label {
+    top: 17%;
+  }
+  .diagram-topology .public-name-label {
+    top: 31%;
+  }
+  .diagram-topology .private-name-label {
+    top: 52%;
+  }
+  .diagram-topology .rt-name-label {
+    top: 73%;
+  }
+  .popup-btn {
+    width: 33px;
+    height: 30px;
+  }
+  .popup-btn.btn-2 {
+    top: 48%;
+  }
+  .popup-btn.btn-3 {
+    top: 70%;
+  }
+  .popup-btn.btn-5 {
+    top: 66%;
+  }
+  #simple-topo-2 .diagram-topology .vcn-hub-label {
+    top: 8%;
+  }
+  #simple-topo-2 .diagram-topology .vcn-name-label {
+    top: 16%;
+  }
+  #simple-topo-2 .diagram-topology .public-name-label {
+    top: 26%;
+  }
+  #simple-topo-2 .diagram-topology .spoke-vcn-a-label {
+    top: 44.5%;
+  }
+  #simple-topo-2 .diagram-topology .private-name-label {
+    top: 53%;
+  }
+  #simple-topo-2 .diagram-topology .rt-name-label {
+    top: 80%;
+  }
+  #simple-topo-2 .diagram-topology .spoke-vcn-b-label {
+    top: 73%;
+  }
+  #simple-topo-2 .popup-btn.btn-1 {
+    top: 12%;
+  }
+  #simple-topo-2 .popup-btn.btn-2 {
+    top: 23%;
+  }
+  #simple-topo-2 .popup-btn.btn-3 {
+    top: 49%;
+  }
+  #simple-topo-2 .popup-btn.btn-4 {
+    top: 77%;
+  }
+  #simple-topo-2 .popup-btn.btn-5 {
+    top: 12%;
+    right: 40%;
+  }
+  #simple-topo-2 .popup-btn.btn-6 {
+    top: 31%;
+    right: 40%;
+  }
+  #simple-topo-2 .popup-btn.btn-7 {
+    top: 58%;
+    right: 40%;
+  }
+  #simple-topo-2 .popup-btn.btn-8 {
+    top: 85.5%;
+    right: 40%;
+  }
+}

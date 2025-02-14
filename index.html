@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Totplogy Networking</title>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+  <!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leader-line/1.0.7/leader-line.min.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Dropdown Section start-->
+    <div class="dropdown">
+      <label for="topologyDropdown"><strong>Select Topology</strong></label>
+      <select id="topologyDropdown" onchange="handleDropdownChange()">
+        <option value="">-- Select Topology --</option>
+        <option value="simple Topo 1">Simple Topo 1</option>
+        <option value="simple Topo 2">Simple Topo 2</option>
+        <option value="simple Topo 3">Simple Topo 3</option>
+        <option value="simple Topo 4">Simple Topo 4</option>
+      </select>
+    </div>
+    <div>
+      <!-- 1st topology  -->
+      <div id="simple-topo-1" class="topology-row">
+
+        <div class="diagram-topology diagram-topology-one">
+          <h3>Topology 1</h3>
+          <div class="topo-img-wrapper">
+            <img src="./images/topology01.jpg" alt="" usemap="#topology01">
+            <div onclick="showPopup('top1-popup-1')" class="popup-btn btn-1">
+              <span id="public-sl-name-1">Sl Name</span>
+            </div>
+            <div onclick="showPopup('top1-popup-2')" class="popup-btn btn-2">
+              <span id="private-sl-name-1">Sl Name</span>
+            </div>
+            <div onclick="showPopup('top1-popup-3')" class="popup-btn btn-3">
+              <span id="sl-label-1">Sl Name</span>
+            </div>
+            <div onclick="showPopup('top1-popup-4')" class="popup-btn btn-4">
+              <span id="public-rt-name-1">RT 1</span>
+            </div>
+            <div onclick="showPopup('top1-popup-5')" class="popup-btn btn-5">
+              <span id="private-rt-name-1">RT 2</span>
+            </div>
+            <span id="top1-pub-1" class="flow-label label-1">PUB1</span>
+            <span id="top1-priv-1" class="flow-label label-2">PRIV1</span>
+            <span id="top1-priv-2" class="flow-label label-3">PRIV2</span>
+            <span id="top1-inet-1" class="flow-label label-4">INET1</span>
+            <span id="top1-db-1" class="flow-label label-5">DB1</span>
+            <!-- form output display data  -->
+            <div class="network-label-grp vcn-name-label">
+              <span class="network-label-name" id="vpc-name-1">VPC Name</span>
+              <span class="network-label-domain" id="vcn-cidr-1">12.34.56.78/90</span>
+            </div>
+            <div class="network-label-grp public-name-label">
+              <span class="network-label-name" id="public-name-1">Public Subnet Name</span>
+              <span class="network-label-domain" id="public-cidr-1">12.34.56.78/90</span>
+            </div>
+            <div class="network-label-grp private-name-label">
+              <span class="network-label-name" id="private-name-1">Private Subnet Name</span>
+              <span class="network-label-domain" id="private-cidr-1">12.34.56.78/90</span>
+            </div>
+            <div class="network-label-grp rt-name-label">
+              <span class="network-label-name" id="subnet-label-1">Private Subnet Name</span>
+              <span class="network-label-domain" id="subnet-no-1">12.34.56.78/90</span>
+            </div>
+          </div>
+          <div class="generate-btn">
+            <button class="generate-tf-btn" onclick="showPopup('generate-TF-popup')">
+              Generate TF <span class="arrow">➤</span>
+            </button>
+            <div class="">
+              <button class="circular-btn"
+                onclick="openAllPopups('#top1-popup-1, #top1-popup-2, #top1-popup-3, #top1-popup-4, #top1-popup-5')">Open
+                All</button>
+            </div>
+            <div class="open-close-btn">
+              <button class="circular-btn"
+                onclick="closeAllPopups('#top1-popup-1, #top1-popup-2, #top1-popup-3, #top1-popup-4, #top1-popup-5')">Close
+                All</button>
+            </div>
+          </div>
+          <!-- grnrate TF POPup -->
+          <div id="generate-TF-popup" class="generateTFPopup">
+            <span class="generateCloseBtn" onclick="closePopup('generate-TF-popup')">&times;</span>
+            <h3>CODE FIELD</h3>
+            <div class="code-block">
+              <p><span id="code-vpc-name-1">VPC Name </span> : <span id="code-vcn-cidr-1">12.34.56.78/90</span></p>
+              <p><span id="code-public-name-1">Public Subnet Name</span> : <span id="code-public-cidr-1">12.34.56.78/90</span></p>
+              <p><span id="code-private-name-1">Private Subnet Name</span> : <span id="code-private-cidr-1">12.34.56.78/90</span></p>
+              <p><span id="code-subnet-label-1">Private Subnet Name</span> : <span id="code-subnet-no-1">12.34.56.78/90</span></p>
+            </div>
+            <a href="#" class="download-button" onclick="downloadFiles()">Download Files</a>
+          </div>
+          <!------------------- Table Popup (left Top side) ------------------->
+          <div id="top1-popup-1" class="leftpopup leftTopPopup">
+            <div class="leftpopup-content">
+              <span class="leftClose-btn" onclick="closePopup('top1-popup-1')">&times;</span>
+              <h3 class="popup-heading">sl-pub</h3>
+              <h5>Ingress</h5>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Stateless</th>
+                    <th>Source</th>
+                    <th>IP Protocol</th>
+                    <th>SRC Port Range</th>
+                    <th>DST Port Range</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>No</td>
+                    <td>CIDR + 0.0.0.0/0</td>
+                    <td>All Protocols</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>No</td>
+                    <td>Services + All regional services</td>
+                    <td>All Protocols</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <!-- Add more rows as needed -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Table Popup (left Center side popup) -->
+          <div id="top1-popup-2" class="leftCenterpopup leftpopup">
+            <div class="leftButtompopup-content">
+              <span class="leftButtomClose-btn" onclick="closePopup('top1-popup-2')">&times;</span>
+              <h3 class="popup-heading">sl-pri</h3>
+              <h5>Ingress</h5>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Stateless</th>
+                    <th>Source</th>
+                    <th>IP Protocol</th>
+                    <th>SRC Port Range</th>
+                    <th>DST Port Range</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>No</td>
+                    <td>CIDR + 0.0.0.0/0</td>
+                    <td>All Protocols</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>No</td>
+                    <td>Services + All regional services</td>
+                    <td>All Protocols</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <!-- Add more rows as needed -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Table Popup (left bottom side popup) -->
+          <div id="top1-popup-3" class="leftBottompopup leftpopup">
+            <div class="leftButtompopup-content">
+              <span class="leftButtomClose-btn" onclick="closePopup('top1-popup-3')">&times;</span>
+              <h3 class="popup-heading">sl-pri-db</h3>
+              <h5>Ingress</h5>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Stateless</th>
+                    <th>Source</th>
+                    <th>IP Protocol</th>
+                    <th>SRC Port Range</th>
+                    <th>DST Port Range</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>No</td>
+                    <td>CIDR + 0.0.0.0/0</td>
+                    <td>All Protocols</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>No</td>
+                    <td>Services + All regional services</td>
+                    <td>All Protocols</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <!-- Add more rows as needed -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- -------Right top popup -->
+          <div id="top1-popup-4" class="popup">
+            <div class="popup-content">
+              <span class="close-btn" onclick="closePopup('top1-popup-4')">&times;</span>
+              <h3 class="popup-heading">rt-vcn-pub-web</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Destination</th>
+                    <th>Target Type</th>
+                    <th>Target</th>
+                    <th>Route Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0.0.0.0/0</td>
+                    <td>Internet Gateway</td>
+                    <td>IGW</td>
+                    <td>Static</td>
+                  </tr>
+                  <tr>
+                    <td>All <REGION> Services In Oracle Services Network</td>
+                    <td>Service Gateway</td>
+                    <td>SGW</td>
+                    <td>Static</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- ------- right bottom popup -->
+          <div id="top1-popup-5" class="rightBottompopup">
+            <div class="rightBottompopup-content">
+              <span class="rightBottomclose-btn" onclick="closePopup('top1-popup-5')">&times;</span>
+              <h3 class="popup-heading">rt-vcn-app+db</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Destination</th>
+                    <th>Target Type</th>
+                    <th>Target</th>
+                    <th>Route Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0.0.0.0/0</td>
+                    <td>NAT Gateway</td>
+                    <td>NGW</td>
+                    <td>Static</td>
+                  </tr>
+                  <tr>
+                    <td>All <REGION> Services In Oracle Services Network</td>
+                    <td>Service Gateway</td>
+                    <td>SGW</td>
+                    <td>Static</td>
+                  </tr>
+                </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+        <!-- Form Section start-->
+        <form class="network-form" id="diagramForm">
+          <h3>Diagram Input</h3>
+          <!-- VPC Name, Public & private Subnet Name -->
+          <div class="form-inner">
+            <div class="form-col">
+              <h5 class="grp-label">VCN</h5>
+              <div class="input-grp">
+                <label for="vpcName1">VCN Name</label>
+                <input type="text" id="vpcName1" placeholder="" required>
+              </div>
+              <div class="input-grp">
+                <label for="vpcCIDR1">VPC CIDR</label>
+                <input type="text" id="vpcCIDR1" placeholder="" required>
+              </div>
+            </div>
+            <div class="form-col">
+              <h5 class="grp-label">Public Subnet</h5>
+              <div class="input-grp">
+                <label for="publicSubnetName1">Public Subnet Name</label>
+                <input type="text" id="publicSubnetName1" placeholder="" required>
+              </div>
+              <div class="input-grp">
+                <label for="publicSubnetCIDR1">Public Subnet CIDR</label>
+                <input type="text" id="publicSubnetCIDR1" placeholder="e.g., 10.0.0.0/24" required>
+              </div>
+              <div class="input-grp">
+                <label for="publicSLName1">Public SL Name</label>
+                <input type="text" id="publicSLName1" placeholder="" required>
+              </div>
+              <div class="input-grp">
+                <label for="publicRTName1">Public RT Name</label>
+                <input type="text" id="publicRTName1" placeholder="" required>
+              </div>
+            </div>
+            <div class="form-col">
+              <h5 class="grp-label">Private Subnet 1</h5>
+              <div class="input-grp">
+                <label for="privateSubnetRange1">Private Subnet Name</label>
+                <input type="text" id="privateSubnetRange1" placeholder="" required>
+              </div>
+              <div class="input-grp">
+                <label for="PrivateSubnetCIDR1">Private Subnet CIDR</label>
+                <input type="text" id="privateSubnetCIDR1" placeholder="e.g., 10.0.1.0/24" required>
+              </div>
+              <div class="input-grp">
+                <label for="privateSubnetRTName1">Private RT Name</label>
+                <input type="text" id="privateRTName1" placeholder="" required>
+              </div>
+              <div class="input-grp">
+                <label for="privateSLName1">Private SL Name</label>
+                <input type="text" id="privateSLName1" placeholder="" required>
+              </div>
+            </div>
+            <div class="form-col">
+              <h5 class="grp-label">Private Subnet 2</h5>
+              <div class="input-grp">
+                <label for="SubnetName1">Private Subnet Name</label>
+                <input type="text" id="SubnetName1" placeholder="e.g., 10.0.0.0/24" required>
+              </div>
+              <div class="input-grp">
+                <label for="SubnetRange1"> Private Subnet CIDR</label>
+                <input type="text" id="SubnetRange1" placeholder="" required>
+              </div>
+              <div class="input-grp">
+                <label for="SLName1">Private SL Name</label>
+                <input type="text" id="SLName1" placeholder="" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-btm">
+            <div class="form-checkouts">
+              <label>
+                <input type="checkbox" id="chk-show-endpoints"> Show Endpoints
+              </label>
+              <label>
+                  <input type="checkbox" id="chk-pub-priv-db" class="flow-checkbox"> Flow from PUB1/PRIV1/PRIV2 → DB1
+              </label>
+              <label>
+                  <input type="checkbox" id="chk-pub-inet" class="flow-checkbox"> Flow from PUB1 → INET1
+              </label>
+              <label>
+                  <input type="checkbox" id="chk-priv-inet" class="flow-checkbox"> Flow from PRIV1/PRIV2 → INET1
+              </label>
+              <label>
+                  <input type="checkbox" id="chk-pub-priv-bidirectional" class="flow-checkbox"> Flow from PUB1 ↔ PRIV1/PRIV2 (and the other way around)
+              </label>
+            </div>
+            <div class="form-btn-grp">
+              <a class="network-btn" onclick="generateOutput(event, 1)">Populate Fields</a>
+              <button type="submit" class="network-btn" onclick="generateOutput(event, 1)">Generate Network</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- Diagram start Topology One -->
+      <div id="simple-topo-2" class="topology-row">
+        <div class="diagram-topology">
+          <h3>Topology 2</h3>
+          <div class="topo-img-wrapper">
+            <img src="./images/topology111.jpg" alt="topo2">
+            <div onclick="showPopup('top2-popup-1')" class="popup-btn btn-1">
+              <span id="public-sl-name-2">Sl Name</span>
+            </div>
+            <div onclick="showPopup('top2-popup-2')" class="popup-btn btn-2">
+              <span id="private-sl-name-2">Sl Name</span>
+            </div>
+            <div onclick="showPopup('top2-popup-3')" class="popup-btn btn-3 text-blue">
+              <span id="sl-label-2">Sl Name</span>
+            </div>
+            <div onclick="showPopup('top2-popup-4')" class="popup-btn btn-4 text-blue">
+              <span id="public-rt-name-2">RT Name</span>
+            </div>
+            <div onclick="showPopup('top2-popup-5')" class="popup-btn btn-5">
+              <span id="private-rt-name-2">RT Name</span>
+            </div>
+            <div onclick="showPopup('top2-popup-6')" class="popup-btn btn-6">
+              <span id="6popup-2">RT Name</span>
+            </div>
+            <div onclick="showPopup('top2-popup-7')" class="popup-btn btn-7 text-blue">
+              <span id="7popup-2">RT Name</span>
+            </div>
+            <div onclick="showPopup('top2-popup-8')" class="popup-btn btn-8 text-blue">
+              <span id="8popup-2">RT Name</span>
+            </div>
+            <div class="network-label-grp vcn-hub-label">
+              <span class="network-label-name" id="vcn-name-2">VCN (hub vcn)</span>
+              <span class="network-label-domain" id="vcn-no-2">172.16.0.128/24</span>
+            </div>
+            <div class="network-label-grp vcn-name-label">
+              <span class="network-label-name" id="vpc-name-2">VPC Name</span>
+              <span class="network-label-domain" id="vcn-cidr-2">12.34.56.78/90</span>
+            </div>
+            <div class="network-label-grp public-name-label">
+              <span class="network-label-name" id="public-name-2">Public Subnet Name</span>
+              <span class="network-label-domain" id="public-cidr-2">12.34.56.78/90</span>
+            </div>
+            <div class="network-label-grp spoke-vcn-a-label">
+              <span class="network-label-name text-blue" id="vcn-spoke-a-2">VCN (spoke-vcn-a)</span>
+              <span class="network-label-domain" id="vcn-spoke-a-no-2">172.16.0.0/24</span>
+            </div>
+            <div class="network-label-grp vcnPrivateInput private-name-label">
+              <span class="network-label-name text-blue" id="private-name-2">Private Subnet Name</span>
+              <span class="network-label-domain" id="private-cidr-2">12.34.56.78/90</span>
+            </div>
+            <div class="network-label-grp spoke-vcn-b-label">
+              <span class="network-label-name text-blue" id="vcn-spoke-b-2">VCN (spoke-vcn-b)</span>
+              <span class="network-label-domain" id="vcn-spoke-b-no-2">172.16.0.0/24</span>
+            </div>
+            <div class="network-label-grp vcnDatabaseInput rt-name-label">
+              <span class="network-label-name text-blue" id="subnet-label-2">Public RT Name</span>
+              <span class="network-label-domain" id="subnet-no-2">12.34.56.78/90</span>
+            </div>
+          </div>
+          <div class="generate-btn">
+            <button class="generate-tf-btn" onclick="showPopup('generate-TF-popup-2')">
+              Generate TF <span class="arrow">➤</span>
+            </button>
+            <div class="">
+              <button class="circular-btn"
+                onclick="openAllPopups('#top2-popup-1, #top2-popup-2, #top2-popup-3, #top2-popup-4, #top2-popup-5, #top2-popup-6, #top2-popup-7, #top2-popup-8')">Open
+                All</button>
+            </div>
+            <div class="open-close-btn">
+              <button class="circular-btn"
+                onclick="closeAllPopups('#top2-popup-1, #top2-popup-2, #top2-popup-3, #top2-popup-4, #top2-popup-5, #top2-popup-6, #top2-popup-7, #top2-popup-8')">Close
+                All</button>
+            </div>
+          </div>
+          <!-- grnrate TF POPup -->
+          <div id="generate-TF-popup-2" class="generateTFPopup">
+            <span class="generateCloseBtn" onclick="closePopup('generate-TF-popup-2')">&times;</span>
+            <h3>CODE FIELD</h3>
+            <div class="code-block">
+              <p>Create VCN 1 Name: <span id="code-vcn-name">vcn name</span></p>
+              <p>Create VCN 1 CIDR: <span id="code-vcn-cidr">vcn CIDR</span></p>
+              <p>Create VCN 1 Security List: <span id="code-vcn-sl-name">vcn SL name</span></p>
+              <p>Create VCN 1 Routing Table: <span id="code-vcn-rt-name">vcn RT name</span></p>
+            </div>
+            <a href="#" class="download-button" onclick="downloadFiles()">Download Files</a>
+          </div>
+          <!-- -------Right top popup -->
+          <div id="top2-popup-5" class="popup">
+            <div class="popup-content">
+              <span class="close-btn" onclick="closePopup('top2-popup-5')">&times;</span>
+              <h3 class="popup-heading">rt-ven-pub</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Destination</th>
+                    <th>Target Type</th>
+                    <th>Target</th>
+                    <th>Route Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- ------- right bottom popup -->
+          <div id="top2-popup-6" class="rightBottompopup">
+            <div class="rightBottompopup-content">
+              <span class="rightBottomclose-btn" onclick="closePopup('top2-popup-6')">&times;</span>
+              <h3 class="popup-heading">rt-ven-pub</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Destination</th>
+                    <th>Target Type</th>
+                    <th>Target</th>
+                    <th>Route Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- ------- right bottom 3 popup -->
+          <div id="top2-popup-7" class="rightThreepopup">
+            <div class="rightBottompopup-content">
+              <span class="rightBottomclose-btn" onclick="closePopup('top2-popup-7')">&times;</span>
+              <h3>rt-ven-pub</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Destination</th>
+                    <th>Target Type</th>
+                    <th>Target</th>
+                    <th>Route Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- ------- right bottom 4 popup -->
+          <div id="top2-popup-8" class="rightFourpopup">
+            <div class="rightBottompopup-content">
+              <span class="rightBottomclose-btn" onclick="closePopup('top2-popup-8')">&times;</span>
+              <h3>rt-ven-pub</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Destination</th>
+                    <th>Target Type</th>
+                    <th>Target</th>
+                    <th>Route Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!------------------- Table Popup (left Top side) ------------------->
+          <div id="top2-popup-1" class="leftpopup leftTopPopup">
+            <div class="leftpopup-content">
+              <span class="leftClose-btn" onclick="closePopup('top2-popup-1')">&times;</span>
+              <h3 class="popup-heading">sl-pub</h3>
+              <h5>Ingress</h5>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Stateless</th>
+                    <th>Source</th>
+                    <th>IP Protocol</th>
+                    <th>SRC Port Range</th>
+                    <th>DST Port Range</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <!-- Add more rows as needed -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Table Popup (left Center side popup) -->
+          <div id="top2-popup-2" class="leftCenterpopup leftpopup">
+            <div class="leftButtompopup-content">
+              <span class="leftButtomClose-btn" onclick="closePopup('top2-popup-2')">&times;</span>
+              <h3 class="popup-heading">sl-pri</h3>
+              <h5>Ingress</h5>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Stateless</th>
+                    <th>Source</th>
+                    <th>IP Protocol</th>
+                    <th>SRC Port Range</th>
+                    <th>DST Port Range</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <!-- Add more rows as needed -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Table Popup (left bottom side popup) -->
+          <div id="top2-popup-3" class="leftBottompopup leftpopup">
+            <div class="leftButtompopup-content">
+              <span class="leftButtomClose-btn" onclick="closePopup('top2-popup-3')">&times;</span>
+              <h3 class="popup-heading">sl-pri-db</h3>
+              <h5>Ingress</h5>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Stateless</th>
+                    <th>Source</th>
+                    <th>IP Protocol</th>
+                    <th>SRC Port Range</th>
+                    <th>DST Port Range</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <!-- Add more rows as needed -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Finnal last left bottom side popup) -->
+          <div id="top2-popup-4" class="leftFinnalpopup leftpopup">
+            <div class="leftButtompopup-content">
+              <span class="leftButtomClose-btn" onclick="closePopup('top2-popup-4')">&times;</span>
+              <h3 class="popup-heading">sl-pri-db</h3>
+              <h5>Ingress</h5>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Stateless</th>
+                    <th>Source</th>
+                    <th>IP Protocol</th>
+                    <th>SRC Port Range</th>
+                    <th>DST Port Range</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <!-- Add more rows as needed -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- Form Section start-->
+        <form class="network-form" id="diagramForm2">
+          <h3>Diagram Input</h3>
+          <!-- VPC Name, Public & private Subnet Name -->
+          <div class="form-inner">
+            <div class="input-grp">
+              <label for="vcnName2">VCN Name</label>
+              <input type="text" id="vcnName2" placeholder="Enter VCN Name" required>
+            </div>
+            <div class="input-grp">
+              <label for="vcnCIDR2">VCN Ip</label>
+              <input type="text" id="vcnCIDR2" placeholder="Enter VCN CIDR" required>
+            </div>
+            <div class="input-grp">
+              <label for="vpcName2">VPC Name</label>
+              <input type="text" id="vpcName2" placeholder="Enter VPC Name" required>
+            </div>
+            <div class="input-grp">
+              <label for="vpcCIDR2">VPC CIDR</label>
+              <input type="text" id="vpcCIDR2" placeholder="e.g., 10.0.0.0/24" required>
+            </div>
+            <div class="input-grp">
+              <label for="publicSubnetName2">Public Subnet Name</label>
+              <input type="text" id="publicSubnetName2" placeholder="Enter Public Subnet Name" required>
+            </div>
+            <div class="input-grp">
+              <label for="publicSubnetCIDR2">Public Subnet CIDR</label>
+              <input type="text" id="publicSubnetCIDR2" placeholder="e.g., 10.0.0.0/24" required>
+            </div>
+            <div class="input-grp">
+              <label for="privateSubnetRange2">Private Subnet Name</label>
+              <input type="text" id="privateSubnetRange2" placeholder="Enter Private Subnet Name" required>
+            </div>
+            <div class="input-grp">
+              <label for="PrivateSubnetCIDR2">Private Subnet CIDR</label>
+              <input type="text" id="privateSubnetCIDR2" placeholder="e.g., 10.0.1.0/24" required>
+            </div>
+            <div class="input-grp">
+              <label for="VCNSpokeA2">VCN spoke a Name</label>
+              <input type="text" id="VCNSpokeA2" placeholder="Enter Private Subnet Name" required>
+            </div>
+            <div class="input-grp">
+              <label for="VCNSpokeCIDRa2">VCN spoke a CIDR</label>
+              <input type="text" id="VCNSpokeCIDRa2" placeholder="Enter vcn spoke cidr" required>
+            </div>
+            <div class="input-grp">
+              <label for="publicRTName2">Public RT Name</label>
+              <input type="text" id="publicRTName2" placeholder="Enter rt-ven-pub" required>
+            </div>
+            <div class="input-grp">
+              <label for="privateSubnetRTName2">Private RT Name</label>
+              <input type="text" id="privateRTName2" placeholder="Enter rt-ven-pub" required>
+            </div>
+            <div class="input-grp">
+              <label for="publicSLName2">Public SL Name</label>
+              <input type="text" id="publicSLName2" placeholder="Enter sl-pub" required>
+            </div>
+            <div class="input-grp">
+              <label for="privateSLName2">Private SL Name</label>
+              <input type="text" id="privateSLName2" placeholder="Enter sl-pri" required>
+            </div>
+            <div class="input-grp">
+              <label for="VCNSpokeB2">VCN spoke b Name</label>
+              <input type="text" id="VCNSpokeB2" placeholder="Enter Private Subnet Name" required>
+            </div>
+            <div class="input-grp">
+              <label for="VCNSpokeCIDRb2">VCN spoke b CIDR</label>
+              <input type="text" id="VCNSpokeCIDRb2" placeholder="Enter vcn spoke cidr" required>
+            </div>
+            <div class="input-grp">
+              <label for="SLName2">SL Name</label>
+              <input type="text" id="SLName2" placeholder="Enter sl" required>
+            </div>
+            <div class="input-grp">
+              <label for="SubnetName2"> Subnet Name</label>
+              <input type="text" id="SubnetName2" placeholder="e.g., 10.0.0.0/24" required>
+            </div>
+            <div class="input-grp">
+              <label for="SubnetRange2"> Subnet No</label>
+              <input type="text" id="SubnetRange2" placeholder="Enter Private Subnet Name" required>
+            </div>
+            <div class="input-grp">
+              <label for="6Popup2"> Subnet No</label>
+              <input type="text" id="6Popup2" placeholder="Enter Private Subnet Name" required>
+            </div>
+            <div class="input-grp">
+              <label for="7Popup2"> Subnet No</label>
+              <input type="text" id="7Popup2" placeholder="Enter Private Subnet Name" required>
+            </div>
+            <div class="input-grp">
+              <label for="8Popup2"> Subnet No</label>
+              <input type="text" id="8Popup2" placeholder="Enter Private Subnet Name" required>
+            </div>
+          </div>
+          <button type="submit" class="network-btn" onclick="generateOutput(event, 2)">Generate Network</button>
+        </form>
+      </div>
+    </div>
+    <!-- -------------------------All Popup-------------- -->
+  </div>
+  <script src="js/custom.js"></script>
+</body>
+
+</html>
