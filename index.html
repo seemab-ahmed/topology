@@ -34,7 +34,7 @@
         <div class="diagram-topology diagram-topology-one">
           <h3>Topology 1</h3>
           <div class="topo-img-wrapper">
-            <img src="./images/topology01.jpg" alt="" usemap="#topology01">
+            <img src="./images/topo-1.jpg" alt="topo1" usemap="#topology01">
             <div onclick="showPopup('top1-popup-1')" class="popup-btn btn-1">
               <span id="public-sl-name-1">Sl Name</span>
             </div>
@@ -49,6 +49,9 @@
             </div>
             <div onclick="showPopup('top1-popup-5')" class="popup-btn btn-5">
               <span id="private-rt-name-1">RT 2</span>
+            </div>
+            <div onclick="showPopup('top1-popup-6')" class="popup-btn btn-6">
+              <span id="priv-rt-name-1">RT 3</span>
             </div>
             <span id="top1-pub-1" class="flow-label label-1">PUB1</span>
             <span id="top1-priv-1" class="flow-label label-2">PRIV1</span>
@@ -74,17 +77,17 @@
             </div>
           </div>
           <div class="generate-btn">
-            <button class="generate-tf-btn" onclick="showPopup('generate-TF-popup')">
+            <!-- <button class="generate-tf-btn" onclick="showPopup('generate-TF-popup')">
               Generate TF <span class="arrow">➤</span>
-            </button>
+            </button> -->
             <div class="">
               <button class="circular-btn"
-                onclick="openAllPopups('#top1-popup-1, #top1-popup-2, #top1-popup-3, #top1-popup-4, #top1-popup-5')">Open
+                onclick="openAllPopups('#top1-popup-1, #top1-popup-2, #top1-popup-3, #top1-popup-4, #top1-popup-5, #top1-popup-5')">Open
                 All</button>
             </div>
             <div class="open-close-btn">
               <button class="circular-btn"
-                onclick="closeAllPopups('#top1-popup-1, #top1-popup-2, #top1-popup-3, #top1-popup-4, #top1-popup-5')">Close
+                onclick="closeAllPopups('#top1-popup-1, #top1-popup-2, #top1-popup-3, #top1-popup-4, #top1-popup-5, #top1-popup-5')">Close
                 All</button>
             </div>
           </div>
@@ -270,6 +273,36 @@
                 </table>
             </div>
           </div>
+          <div id="top1-popup-6" class="rightBottompopup">
+            <div class="rightBottompopup-content">
+              <span class="rightBottomclose-btn" onclick="closePopup('top1-popup-6')">&times;</span>
+              <h3 class="popup-heading">rt-vcn-app+db</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Destination</th>
+                    <th>Target Type</th>
+                    <th>Target</th>
+                    <th>Route Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0.0.0.0/0</td>
+                    <td>NAT Gateway</td>
+                    <td>NGW</td>
+                    <td>Static</td>
+                  </tr>
+                  <tr>
+                    <td>All <REGION> Services In Oracle Services Network</td>
+                    <td>Service Gateway</td>
+                    <td>SGW</td>
+                    <td>Static</td>
+                  </tr>
+                </tbody>
+                </table>
+            </div>
+          </div>
         </div>
         <!-- Form Section start-->
         <form class="network-form" id="diagramForm">
@@ -317,12 +350,12 @@
                 <input type="text" id="privateSubnetCIDR1" placeholder="e.g., 10.0.1.0/24" required>
               </div>
               <div class="input-grp">
-                <label for="privateSubnetRTName1">Private RT Name</label>
-                <input type="text" id="privateRTName1" placeholder="" required>
-              </div>
-              <div class="input-grp">
                 <label for="privateSLName1">Private SL Name</label>
                 <input type="text" id="privateSLName1" placeholder="" required>
+              </div>
+              <div class="input-grp">
+                <label for="privateSubnetRTName1">Private RT Name</label>
+                <input type="text" id="privateRTName1" placeholder="" required>
               </div>
             </div>
             <div class="form-col">
@@ -338,6 +371,10 @@
               <div class="input-grp">
                 <label for="SLName1">Private SL Name</label>
                 <input type="text" id="SLName1" placeholder="" required>
+              </div>
+              <div class="input-grp">
+                <label for="RTName1">Private RT Name</label>
+                <input type="text" id="RTName1" placeholder="" required>
               </div>
             </div>
           </div>
@@ -360,9 +397,11 @@
               </label>
             </div>
             <div class="form-btn-grp">
-              <a class="network-btn" onclick="generateOutput(event, 1)">Populate Fields</a>
-              <button type="submit" class="network-btn" onclick="generateOutput(event, 1)">Generate Network</button>
-            </div>
+              <!-- Prevents the page reload by using event.preventDefault() in JS -->
+              <button class="network-btn" onclick="populateForm(1); return false;">Populate Fields</button>
+              <button type="button" class="network-btn" onclick="generateOutput(event, 1)">Generate Network</button>
+          </div>
+          
           </div>
         </form>
       </div>

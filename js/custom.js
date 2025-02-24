@@ -12,77 +12,102 @@ function handleDropdownChange() {
       selectedSection.style.display = "flex";
   }
 }
-// Function to generate output based on input fields
-function generateOutput(event, topoNumber) {
-    // Prevent form submission
-    if (event) event.preventDefault();
-  
-    // Ensure the topology number is provided
+// Global data to populate the form
+const topo1Data = {
+    "vpcName": "OraStage-VCN",
+    "vpcCIDR": "10.0.0.0/16",
+    "publicSubnetName": "PUB-SUBNET",
+    "publicSubnetCIDR": "10.0.1.0/24",
+    "publicSLName": "PUB-SL",
+    "publicRTName": "PUB-RT",
+    "privateSubnetRange": "WEB-SUBNET",
+    "privateSubnetCIDR": "10.0.2.0/24",
+    "privateSLName": "WEB-SL",
+    "privateRTName": "WEB-RT",
+    "SubnetName": "APP-SUBNET",
+    "SubnetRange": "10.0.3.0/24",
+    "SLName": "APP-SL",
+    "RTName": "APP-RT"
+};
+function populateForm(topoNumber) {
+    console.log("populateForm clicked"); // This should ONLY show when clicked
+
     if (!topoNumber) {
-      alert("Topology number is required.");
-      return;
+        alert("Topology number is missing.");
+        return;
     }
-  
-    // Get the selected topology value
-    const selectedTopology = document.getElementById('topologyDropdown')?.value;
-  
-    // Validate required fields
-    if (!selectedTopology) {
-      alert("Please select a topology.");
-      return;
+
+    if (typeof topo1Data === "undefined") {
+        console.error("topo1Data is not defined.");
+        return;
     }
-  
-    // Define a helper function to get values and update diagram elements
-    const updateElement = (fieldId, diagramId) => {
-      const fieldValue = document.getElementById(`${fieldId}${topoNumber}`)?.value;
-      const diagramElement = document.getElementById(`${diagramId}-${topoNumber}`);
-      if (diagramElement) {
-        diagramElement.innerHTML = fieldValue || "";
-      }
+
+    const setFieldValue = (fieldId, value) => {
+        const inputElement = document.getElementById(`${fieldId}${topoNumber}`);
+        if (inputElement) {
+            inputElement.value = value || "";
+        }
     };
-  
-    // Map field-to-diagram IDs
+
     const mappings = [
-      { field: "vcnName", diagram: "vcn-name" },
-      { field: "vcnCIDR", diagram: "vcn-no" },
-      { field: "vpcName", diagram: "vpc-name" },
-      { field: "vpcCIDR", diagram: "vcn-cidr" },
-      { field: "publicSubnetName", diagram: "public-name" },
-      { field: "publicSubnetCIDR", diagram: "public-cidr" },
-      { field: "VCNSpokeA", diagram: "vcn-spoke-a" },
-      { field: "VCNSpokeCIDRa", diagram: "vcn-spoke-a-no" },
-      { field: "VCNSpokeB", diagram: "vcn-spoke-b" },
-      { field: "VCNSpokeCIDRb", diagram: "vcn-spoke-b-no" },
-      { field: "privateSubnetRange", diagram: "private-name" },
-      { field: "privateSubnetCIDR", diagram: "private-cidr" },
-      { field: "privateRTName", diagram: "private-rt-name" },
-      { field: "publicRTName", diagram: "public-rt-name" },
-      { field: "publicSLName", diagram: "public-sl-name" },
-      { field: "privateSLName", diagram: "private-sl-name" },
-      { field: "SLName", diagram: "sl-label" },
-      { field: "SubnetName", diagram: "subnet-label" },
-      { field: "SubnetRange", diagram: "subnet-no" },
-      { field: "6Popup", diagram: "6popup" },
-      { field: "7Popup", diagram: "7popup" },
-      { field: "8Popup", diagram: "8popup" },
-      // code field data tf 1
-      { field: "vpcName", diagram: "code-vpc-name" },
-      { field: "vpcCIDR", diagram: "code-vcn-cidr" },
-      { field: "publicSubnetName", diagram: "code-public-name" },
-      { field: "publicSubnetCIDR", diagram: "code-public-cidr" },
-      { field: "SubnetName", diagram: "code-subnet-label" },
-      { field: "SubnetRange", diagram: "code-subnet-no" },
-      { field: "privateSubnetRange", diagram: "code-private-name" },
-      { field: "privateSubnetCIDR", diagram: "code-private-cidr" },
+        { field: "vpcName", dataKey: "vpcName" },
+        { field: "vpcCIDR", dataKey: "vpcCIDR" },
+        { field: "publicSubnetName", dataKey: "publicSubnetName" },
+        { field: "publicSubnetCIDR", dataKey: "publicSubnetCIDR" },
+        { field: "publicSLName", dataKey: "publicSLName" },
+        { field: "publicRTName", dataKey: "publicRTName" },
+        { field: "privateSubnetRange", dataKey: "privateSubnetRange" },
+        { field: "privateSubnetCIDR", dataKey: "privateSubnetCIDR" },
+        { field: "privateSLName", dataKey: "privateSLName" },
+        { field: "privateRTName", dataKey: "privateRTName" },
+        { field: "SubnetName", dataKey: "SubnetName" },
+        { field: "SubnetRange", dataKey: "SubnetRange" },
+        { field: "SLName", dataKey: "SLName" },
+        { field: "RTName", dataKey: "RTName" }
     ];
-  
-    // Iterate through mappings to populate diagram values
+
+    mappings.forEach(({ field, dataKey }) => {
+        if (topo1Data[dataKey]) {
+            setFieldValue(field, topo1Data[dataKey]);
+        }
+    });
+}
+// Function to generate output based on entered values
+function generateOutput(event, topoNumber) {
+    if (event) event.preventDefault();
+    if (!topoNumber) {
+        alert("Topology number is required.");
+        return;
+    }
+
+    const updateElement = (fieldId, diagramId) => {
+        const fieldValue = document.getElementById(`${fieldId}${topoNumber}`)?.value;
+        const diagramElement = document.getElementById(`${diagramId}-${topoNumber}`);
+        if (diagramElement) {
+            diagramElement.innerHTML = fieldValue || "";
+        }
+    };
+
+    const mappings = [
+        { field: "vpcName", diagram: "vpc-name" },
+        { field: "vpcCIDR", diagram: "vcn-cidr" },
+        { field: "publicSubnetName", diagram: "public-name" },
+        { field: "publicSubnetCIDR", diagram: "public-cidr" },
+        { field: "publicSLName", diagram: "public-sl-name" },
+        { field: "publicRTName", diagram: "public-rt-name" },
+        { field: "privateSubnetRange", diagram: "private-name" },
+        { field: "privateSubnetCIDR", diagram: "private-cidr" },
+        { field: "privateSLName", diagram: "private-sl-name" },
+        { field: "privateRTName", diagram: "private-rt-name" },
+        { field: "SubnetName", diagram: "subnet-label" },
+        { field: "SubnetRange", diagram: "subnet-no" },
+        { field: "SLName", diagram: "sl-label" },
+        { field: "RTName", diagram: "priv-rt-name" }
+    ];
+
     mappings.forEach(({ field, diagram }) => updateElement(field, diagram));
-  
-    // Show the appropriate Terraform popup
-    showPopup(`generate-TF-popup-${topoNumber}`);
-  }
-  
+}
+
 // Function to populate data in the popup
 function codeFieldData() {
     const codeVpcName = document.getElementById("vpcName").value;
@@ -147,7 +172,24 @@ let lines = {};
 const connectionMap = {
     'chk-pub-priv-db': [['top1-pub-1', 'top1-db-1'], ['top1-priv-1', 'top1-db-1'], ['top1-priv-2', 'top1-db-1']],
     'chk-pub-inet': [['top1-pub-1', 'top1-inet-1']],
-    'chk-priv-inet': [['top1-priv-1', 'top1-inet-1'], ['top1-priv-2', 'top1-inet-1']],
+    // 'chk-priv-inet': [['top1-priv-1', 'top1-inet-1'], ['top1-priv-2', 'top1-inet-1']],
+    'chk-priv-inet': [
+    // The third parameter is the options object for LeaderLine
+    ['top1-priv-1', 'top1-inet-1',{
+        path: 'magnet',
+        startSocket: 'top',
+        endSocket: 'bottom',
+        startPlug: 'arrow1',
+        endPlug: 'arrow'
+      }],
+    ['top1-priv-2', 'top1-inet-1',{
+        path: 'magnet',
+        startSocket: 'top',
+        endSocket: 'bottom',
+        startPlug: 'arrow1',
+        endPlug: 'arrow'
+      }]
+  ],
     'chk-pub-priv-bidirectional': 
     [
         ['top1-pub-1', 'top1-priv-1', { path: 'straight', startPlug: 'arrow1', endPlug: 'arrow' }],
@@ -188,3 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('.flow-checkbox').forEach(checkbox => checkbox.addEventListener('change', updateFlowLines));
     handleShowEndpoints();
 });
+// 'chk-priv-inet': [
+//     ['top1-priv-1', 'top1-inet-1', { path: 'arc', startPlug: 'arrow1', endPlug: 'arrow', middleLabel: 'Via NAT' }],
+//     ['top1-priv-2', 'top1-inet-1', { path: 'arc', startPlug: 'arrow1', endPlug: 'arrow', middleLabel: 'Via NAT' }]
+// ]

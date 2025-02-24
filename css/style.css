@@ -68,23 +68,27 @@ select:focus {
 }
 .popup-btn.btn-1 {
   top: 26.5%;
-  right: 37.7%;
+  right: 45%;
 }
 .popup-btn.btn-2 {
   top: 45.5%;
-  right: 37.7%;
+  right: 45%;
 }
 .popup-btn.btn-3 {
   top: 64%;
-  right: 37.7%;
+  right: 45%;
 }
 .popup-btn.btn-4 {
-  top: 27%;
-  right: 28.7%;
+  top: 26.5%;
+  right: 37%;
 }
 .popup-btn.btn-5 {
-  top: 60%;
-  right: 28.7%;
+  top: 46.5%;
+  right: 37%;
+}
+.popup-btn.btn-6 {
+  top: 63.5%;
+  right: 37%;
 }
 #simple-topo-2 .popup-btn.btn-1 {
   top: 13%;
@@ -126,28 +130,28 @@ select:focus {
   border-radius: 4px;
   border: 1px solid #333;
   color: #333;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
 }
 .flow-label.label-1 {
-  top: 33%;
-  left: 34%;
+  top: 32%;
+  left: 31%;
 }
 .flow-label.label-2 {
   top: 50%;
-  left: 34%;
+  left: 31%;
 }
 .flow-label.label-3 {
   top: 67%;
-  left: 34%;
+  left: 31%;
 }
 .flow-label.label-4 {
-  top: 19%;
-  right: 4.5%;
+  top: 18%;
+  right: 4%;
 }
 .flow-label.label-5 {
-  top: 76%;
-  right: 4.5%;
+  top: 72%;
+  right: 17.5%;
 }
 .network-label-grp {
   color: #b00013;
@@ -159,7 +163,7 @@ select:focus {
 }
 .network-label-name {
   font-weight: 700;
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 5px;
   display: block;
 }
@@ -183,11 +187,11 @@ select:focus {
 }
 .diagram-topology .private-name-label {
   top: 49%;
-  left: 258px;
+  left: 18%;
 }
 .diagram-topology .rt-name-label {
   top: 67%;
-  left: 258px;
+  left: 18%;
 }
 /*************************** Form Styling */
 form {
@@ -341,7 +345,7 @@ button:hover {
 }
 .diagram-topology .vcn-name-label{
   top: 20%;
-  left: 215px;
+  left: 15%;
 }
 #simple-topo-2 .diagram-topology .vcn-hub-label{
   top: 12%;
@@ -363,7 +367,7 @@ button:hover {
 .diagram-topology .public-name-label{
   position: absolute;
   top: 32%;
-  left: 258px;
+  left: 18%;
   z-index: 5;
 }
 #simple-topo-2 .diagram-topology .public-name-label{
@@ -847,42 +851,7 @@ button:hover {
   .network-label-domain {
     font-size: 14px;
   }
-  /* .popup-btn.btn-1 {
-    top: 25%;
-    right: 37%;
-  }
-  .popup-btn.btn-2 {
-    top:42%;
-    right: 37%;
-  }
-  .popup-btn.btn-3 {
-    top: 59%;
-    right: 37%;
-  }
-  .popup-btn.btn-4 {
-    top: 25%;
-    right: 28%;
-  }
-  .popup-btn.btn-5 {
-    top: 56%;
-    right: 28%;
-  } */
-  .diagram-topology .vcn-name-label {
-    top: 21%;
-    left: 18%;
-  }
-  .diagram-topology .public-name-label {
-    top: 32%;
-    left: 21%;
-  }
-  .diagram-topology .private-name-label {
-    /* top: 48%; */
-    left: 21%;
-  }
-  .diagram-topology .rt-name-label {
-    top: 66%;
-    left: 21%;
-  }
+  
 }
 @media screen and (max-width:1180px) {
   .network-label-name {
@@ -909,40 +878,32 @@ button:hover {
     max-width: 100%;
   }
   .popup-btn.btn-1 {
-    top: 26%;
-    right: 36.5%;
+    top: 25%;
+    right: 44.5%;
   }
   .popup-btn.btn-2 {
-    top: 42%;
-    right: 36.5%;
+    top: 42.5%;
+    right: 44.5%;
   }
   .popup-btn.btn-3 {
-    top: 60%;
-    right: 37%;
+    top: 60.5%;
+    right: 44.5%;
   }
   .popup-btn.btn-4 {
-    top: 25.5%;
-    right: 28%;
+    top: 25%;
+    right: 36.5%;
   }
   .popup-btn.btn-5 {
-    top: 57%;
-    right: 28%;
+    top: 44%;
+    right: 36.5%;
   }
-  .diagram-topology .vcn-name-label {
-    top: 20%;
-    left: 17%;
-  }
-  .diagram-topology .public-name-label {
-    top: 32%;
-    left: 21%;
-  }
-  .diagram-topology .private-name-label {
-    top: 48%;
-    left: 21%;
-  }
+  .popup-btn.btn-6 {
+    top: 60.5%;
+    right: 36.5%;
+}
   .diagram-topology .rt-name-label {
     top: 65%;
-    left: 21%;
+    /* left: 21%; */
   }
   #simple-topo-2 .popup-btn.btn-8 {
     top: 78%;
@@ -987,7 +948,7 @@ button:hover {
   }
   .flow-label.label-5 {
     top: 68%;
-    right: 3.5%;
+    right: 17%;
   }
 
 }
@@ -1022,10 +983,10 @@ button:hover {
   }
   
   .diagram-topology .private-name-label {
-    top: 44%;
+    top: 46%;
   }
   .diagram-topology .rt-name-label {
-    top: 57%;
+    top: 61%;
   }
   .popup-btn {
     width: 40px;
@@ -1034,7 +995,7 @@ button:hover {
 
   }
   .diagram-topology .public-name-label {
-    top: 30%;
+    top: 31%;
   }
   #simple-topo-2 .popup-btn.btn-5 {
     top: 16%;
@@ -1061,18 +1022,21 @@ button:hover {
     padding: 1px 3px;
     font-size: 9px;
   }
+  .flow-label.label-1 {
+    top: 34%;
+  }
   .flow-label.label-2 {
-    top: 53%;
+    top: 51%;
   }
   .flow-label.label-3 {
-    top: 74%;
+    top: 62%;
   }
   .flow-label.label-4 {
     right: 3%;
   }
   .flow-label.label-5 {
-    top: 83%;
-    right: 3%;
+    top: 64%;
+    right: 17%;
   }
   .leftpopup, .popup, .rightBottompopup {
     position: static;
@@ -1161,5 +1125,15 @@ button:hover {
   #simple-topo-2 .popup-btn.btn-8 {
     top: 85.5%;
     right: 40%;
+  }
+  .flow-label.label-2 {
+    top: 53%;
+  }
+  .flow-label.label-3 {
+    top: 74%;
+  }
+  .flow-label.label-5 {
+    top: 77%;
+    right: 16%;
   }
 }
